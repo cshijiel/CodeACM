@@ -1,5 +1,9 @@
 package com.roc.M001;
-
+/**
+ * 这个题来自剑指Offer
+ * @author Roc
+ *
+ */
 public class Power {
 
 	static boolean g_InvalidInput = false;
