@@ -10,7 +10,7 @@ public class Power {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println(MathPower(3.54, 4));
+		System.out.println(MathPower(3,2)+"\n"+PowerWidthUnsighedExponent_Old(3,2));
 	}
 
 	private static double MathPower(double base, int exponent) {
@@ -40,11 +40,40 @@ public class Power {
 		}
 	}
 
+	/**
+	 * 优化后的算法
+	 * @param base
+	 * @param absExponent
+	 * @return
+	 */
 	private static double PowerWidthUnsighedExponent(double base,
 			int absExponent) {
 		// TODO Auto-generated method stub
+		if (absExponent == 0) {
+			return 1;
+		}
+		if (absExponent == 1) {
+			return base;
+		}
+		double result = PowerWidthUnsighedExponent(base, absExponent >> 1);
+		result *= result;
+		if ((absExponent & 0x1) == 1) {
+			result *= base;
+		}
+		return result;
+	}
+	
+	/**
+	 * 优化之前的算法
+	 * @param base
+	 * @param absExponent
+	 * @return
+	 */
+	private static double PowerWidthUnsighedExponent_Old(double base,
+			int absExponent) {
+		// TODO Auto-generated method stub
 		double result = base;
-		for (int i = 1; i <= absExponent; i++) {
+		for (int i = 1; i < absExponent; i++) {
 			result *= base;
 		}
 		return result;
