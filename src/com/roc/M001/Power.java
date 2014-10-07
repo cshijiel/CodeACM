@@ -10,7 +10,14 @@ public class Power {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println(MathPower(3,2)+"\n"+PowerWidthUnsighedExponent_Old(3,2));
+		long start = System.currentTimeMillis();
+		System.out.println(MathPower(3,169)+"\n");
+		long end = System.currentTimeMillis();
+		System.out.println(end-start);
+		long start1 = System.currentTimeMillis();
+		System.out.println(calc_1(3,169)+"\n");
+		long end1 = System.currentTimeMillis();
+		System.out.println(end1-start1);
 	}
 
 	private static double MathPower(double base, int exponent) {
@@ -57,6 +64,7 @@ public class Power {
 		}
 		double result = PowerWidthUnsighedExponent(base, absExponent >> 1);
 		result *= result;
+	//	System.out.println("--->"+(absExponent & 0x1)+absExponent+0x1);
 		if ((absExponent & 0x1) == 1) {
 			result *= base;
 		}
@@ -78,4 +86,18 @@ public class Power {
 		}
 		return result;
 	}
+	public static double calc_1(long a, long b) {
+		final String s = Long.toBinaryString(b);
+		int length = s.length();
+		double result = 1;
+		for (int i = 0; i < length; ++i) {
+			char temp = s.charAt(i);
+			result = (result * result) ;
+			if (temp == '1') {
+				result = (result * a) ;
+			}
+		}
+		return result;
+	}
+
 }
