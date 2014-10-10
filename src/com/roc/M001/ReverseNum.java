@@ -1,5 +1,9 @@
 package com.roc.M001;
 
+/**
+ * @author Chen
+ *
+ */
 public class ReverseNum {
 
 	/**
@@ -7,7 +11,8 @@ public class ReverseNum {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println(reverseNumber(152364125));
+		long b = 1234567891;
+		System.out.println(reverseNumber(b)+"\n"+reverse((int) b));
 	}
 
 	public static long reverseNumber(long inputN) {
@@ -21,5 +26,19 @@ public class ReverseNum {
 		}
 		return sum;
 
+	}
+
+	/**
+	 * 网上的代码，很简练
+	 * @param a
+	 */
+	public static int reverse(int a) {
+		int rs = 0;
+		while (a > 0) {
+			rs *= 10;
+			rs += a % 10;
+			a /= 10;
+		}
+		return rs;
 	}
 }
